@@ -1,0 +1,12 @@
+除了对要使用的方法进行检测外，如
+if(!document.getElementById){
+	return false;
+}
+还要对元素进行检测，如
+if(!document.getElementById("gallery")){
+	return false;
+}
+var gallery = document.getElementById("gallery");
+在HTML文档发生变化时，JS代码仍能良好运行
+
+出于可读性考虑，所有的对象检测代码最好放在开头部分
