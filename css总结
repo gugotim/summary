@@ -30,7 +30,10 @@ div会先接在h1之后，然后向右浮动，p会顶替div原来的位置，�
 一般用于块元素和img
 对于都通过position从流中删除的元素，他们都有z-index属性来指定距离文档流的高度，即数值越高越在上层
 
-positon默认为static
+position默认为static
+
+position:absolute
+位置相对于整个文档，或者是一个fixed/absolute的父元素
 
 css table
 <div>		//display:table; border-spacing:10px;
@@ -50,3 +53,5 @@ table 表格
 有padding, border，但不用margin,用border-spacing,如
 border-spacing:10px 30px;//水平10，竖直30,但这样会有单元格之间会有两个border，
 可以使用border-collapse: collapse;代替 这样单元格之间只有一个border
+
+
