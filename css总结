@@ -33,7 +33,8 @@ div会先接在h1之后，然后向右浮动，p会顶替div原来的位置，�
 position默认为static
 
 position:absolute
-位置相对于整个文档，或者是一个fixed/absolute的父元素
+找position为absolute,relative或者fixed的父元素，没有就是根据整个浏览器窗口(不是body),
+如right:0px;top:0px;则永远在浏览器右上角，拖动窗口大小可看到一直在右上角
 
 css table
 <div>		//display:table; border-spacing:10px;
