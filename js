@@ -50,5 +50,5 @@ function addLoadEvent(func) {
 对于window.onload,应使用window.onload = functiona;后面不加(),否则会立即执行
 对于需要传递参数的初载函数，使用
 window.onload = function(){
-	functiona();
+	functiona(args);
 };
