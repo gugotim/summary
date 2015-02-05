@@ -1,0 +1,17 @@
+新建一个ajax请求使用new XMLHTTPRequest();
+var request = new XMLHTTPRequest();
+request.open("GET", "example.txt", true);
+if(request){
+	request.onreadystatechange = function(){
+		if(request.readyState == 4){
+			//do something
+		}
+		request.send(somedata);
+	}
+} else {
+	alert("sorry, your browser doesn't support XMLHTTPRequest.");
+}
+另外，使用XMLHTTPRequest只能请求访问与html同属一个域的数据，不能请求其他域数据。
+
+渐进增强地使用ajax
+如登陆，先按照正常方式创建表单和submit,然后在onsubmit里使用ajax，若用户禁用了JS，onsubmit不起作用，表单按照传统方式整个传递，返回结果刷新整个页面，若开启了JS则使用ajax

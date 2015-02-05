@@ -1,0 +1,8 @@
+XHTML中，document.write不起作用
+
+不使用document.write
+
+innerHTML已加入HTML5，但会整个替换DOM中的内容，没有细节
+适合大量添加HTML
+同样，innerHTML为html专有，XHTML中不能使用
+

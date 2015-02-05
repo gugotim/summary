@@ -1,0 +1,58 @@
+div
+text-align:center;   只能在块元素上设置，会影响其中的内联元素，如在div上设置
+<div><p></p><img></div>
+其中的p img都会居中对齐,其中img是因为是内联元素而对齐，p或H等则是因为继承了DIV的text-align而对齐，在img上设置不起作用
+
+span
+内联元素，类似div的逻辑分区作用
+
+给内联元素设置margin padding 时，只有左右的起作用，上下的会与上下行的内联元素的padding margin重叠
+但是img虽然是个内联元素,但是其margin padding 对上下元素都有影响，这种情况表现的像块元素
+
+margin 外边距
+对于块元素，垂直方向上的margin会折叠，最终距离为margin较大的那个数值，如
+上下两个DIV，margin 分别为 10 20，则最终他们之间的距离为20，并且
+若一个元素嵌套一个元素中也是如此，如
+一个DIV中还有一个DIV，他们的margin 分别为10 20，则上下margin共为20，但是
+若外面的元素有border,则他们的margin分开计算
+但是，对于上下的两个DIV，若一个设置float，则margin分开计算
+
+float   浮动
+对于浮动来说，块元素会以本来其应在的位置进行浮动，如
+<h1></h1>
+<div></div>//float:right;
+<p></p>
+div会先接在h1之后，然后向右浮动，p会顶替div原来的位置，但是p中的内联元素会辨别出DIV的边界（margin外），绕着其显示，
+更准确的说法是，浮动的DIV被抽离出流，浮动于靠右边的位置，其余块元素按顺序显示（块元素仍会占据整个宽度，可用border验证），好像浮动的div不存在，但是其中的内联元素会识别出div的边界(如文字)，并绕着其显示
+
+绝对定位	position:absolute;
+完全从流中删除，根据top,right,left,bottom(2个即可)指定位置,再设定宽度（不设置宽度，块元素会默认占据整个宽度），其下的内联元素不知其的存在，不会围绕它
+一般用于块元素和img
+对于都通过position从流中删除的元素，他们都有z-index属性来指定距离文档流的高度，即数值越高越在上层
+
+position默认为static
+
+position:absolute
+找position为absolute,relative或者fixed的父元素，没有就是根据整个浏览器窗口(不是body),
+如right:0px;top:0px;则永远在浏览器右上角，拖动窗口大小可看到一直在右上角
+
+css table
+<div>		//display:table; border-spacing:10px;
+  <div>		//display:table-row;
+    <div>	//display:table-cell;vertical-align:top;可为middle,bottom
+    <div>
+  </div>
+</div>
+其中，border-spacing会给每个单元格加margin,因此整个table div margin为10px，这个margin 不会与它相邻的块元素的margin折叠，即若上面有一个div margin-bottom为10px，则他们之间是20px；
+
+只有使用absolute,relative,fixed才有z-index
+绝对定位、相对定位基于父元素，但absolute不在文档流内，relative在文档流内
+fixed基于浏览器窗口
+
+table 表格
+<caption>为标题，可通过指定caption-side: bottom等来调整标题的位置
+有padding, border，但不用margin,用border-spacing,如
+border-spacing:10px 30px;//水平10，竖直30,但这样会有单元格之间会有两个border，
+可以使用border-collapse: collapse;代替 这样单元格之间只有一个border
+
+
