@@ -1,4 +1,15 @@
 默认的，jquery首先选择原生DOM查找元素，但使用自定义选择符时，性能就没有原生DOM快，
 所以尽可能使用jquery已有方法
 js从0开始，比如$('div.kkk:eq(1)')取得的是所有类名为kkk的div中的第二个div
-css的选择从1开始，比如，$('div:nth-child(1)')取得的是作为其父元素的第一个子元素的所有div
+css的选择从1开始，比如，$('div:nth-child(1)')取得的是作为其父元素的第一个子元素的div元素
+另外，比如
+<table>
+  <tr></tr>
+  <tr></tr>
+  <tr></tr>
+  <tr></tr>
+</table>
+要想对奇数行使用一个类，jquery应用$('tr:even').addClass('kkk')
+因为JS从0开始编号，0是偶数；
+而nth-child是jquery中唯一从1开始计数的,如 $('tr:nth-child(odd)').addClass('kkk')
+则应使用tr(odd)

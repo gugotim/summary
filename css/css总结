@@ -55,4 +55,12 @@ table 表格
 border-spacing:10px 30px;//水平10，竖直30,但这样会有单元格之间会有两个border，
 可以使用border-collapse: collapse;代替 这样单元格之间只有一个border
 
-
+nth-child
+nth-child是对于其父元素的第几个元素节点,如
+:nth-child(4)			指的是body内的为其父元素的第四个子元素节点,等价于
+body :nth-child(4)		而:前面的标签只是对元素节点的限定，表示且，如
+body div:nth-child(4)	表示是body的第四个元素且是div，若在body中有三个连续div，第四个元素是ul，第五元素是div，则body div:nth-child(4)返回null,因为body有第四个元素，但是不是div,
+element:nth-child(n) 	element是对元素的限定而不是其父元素,也不是第几个element元素,而是第一个元素，且此元素为element的元素
+所以
+kkk element:nth-child(n)
+是说，从kkk的子元素中开始找，要找的元素是其父元素的第n个子节点，且这种元素的类型是element
