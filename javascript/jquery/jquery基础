@@ -13,3 +13,27 @@ css的选择从1开始，比如，$('div:nth-child(1)')取得的是作为其父�
 因为JS从0开始编号，0是偶数；
 而nth-child是jquery中唯一从1开始计数的,如 $('tr:nth-child(odd)').addClass('kkk')
 则应使用tr(odd)
+
+自定义选择符
+$('div.kkk:eq(1)')        所有类名为kkk的div集和的第2个元素，因为js从0计数
+$('tr:even')              从0开始，0为偶数，选中奇数行
+$('tr:nth-child(odd)')    从1开始，选中奇数行
+$().addClass              加类
+$('div:contains(rose)')   含有文本rose的所有div,rose区分大小写，不需要引号
+                          contains会在往子元素继续寻找，如
+<div><div>123</div></div> 则返回结果包括2个div
+$('input[type="radio"]:checked')  所有被选中的单选框
+
+DOM编历
+$().next()                某元素的下一个兄弟节点
+$().nextAll()             某元素的剩下的所有兄弟节点
+$().prev()                前一个
+$().prevAll()             前面所有的
+$().siblings()            其他所有兄弟节点
+$().nextAll().addBack()   把自己也算上
+$().parent().children()   包括自己的所有同辈元素
+$().parent().children()   所有同辈元素
+    .addClass()
+    .end().find('td:eq(2)')   回到父节点，找到节点的第三个td子节点
+
+在上面节点的基础上继续找使用find
