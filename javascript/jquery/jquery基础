@@ -37,3 +37,10 @@ $().parent().children()   所有同辈元素
     .end().find('td:eq(2)')   回到父节点，找到节点的第三个td子节点
 
 在上面节点的基础上继续找使用find
+
+$().get(n)                返回的是一个HTML DOM,对其只能使用原生DOM的方法
+                            ，jquery如addClass()不起作用
+$($().get(n)).addClass()  可以成功，因为把DOM元素转换成了jquery对象
+
+祖先
+.closest(selector)        向上寻找匹配选择符的最近父节点
