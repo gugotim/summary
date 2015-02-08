@@ -44,3 +44,37 @@ $($().get(n)).addClass()  可以成功，因为把DOM元素转换成了jquery对
 
 祖先
 .closest(selector)        向上寻找匹配选择符的最近父节点
+
+window.onload 和 $(document).ready()的区别
+window.onload必须等到图像完全下载完成
+图像未下载完成时可以使用$(document).ready(),但对图像的高度或宽度等属性的设置不一定奏效
+
+多库同时使用$时
+<script src="prototype.js"></script>
+<script src="jquery.js"></script>
+<script>
+	Jquery.noConflict();
+</script>
+<script src="myscript.js"></script>
+这样，就可以在myscript.js中以$调用prototype.js的方法，Jquery.xxx调用jquery的方法
+
+事件传播
+事件捕获： 外->内        事件冒泡： 具体->外
+DOM标准规定，事件的捕获从外到内，但返回（执行？）从内到外
+jquery使用事件冒泡，如  <div><span><a></a></span></div>
+单击链接时，相应顺序为 a->span->div
+
+此时的问题：
+若给div绑定了mouseout，从a上移开鼠标时mouseout会以a->span->div的顺序执行
+用mouseenter和mouseleave则可避免，只会对目标元素作用
+
+使用event.stopPropagation()可以使得事件不再向上冒泡
+比如对上面的例子中链接a绑定click,在click事件中加入event.stopPropagation(),可让此点击事件
+不再向上冒泡，即若点击的时链接，则此点击事件不上传给span和div，达到的效果是，点击链接则由链接
+单击事件处理，点击div的其他部分则由div.click处理
+
+默认操作，如<a>的打开链接，使用preventDefault()停止
+默认操作和事件传播任何一方发生时都可以终止另一方，如在默认操作中调用.stopPropagation()则会停止
+事件传播
+
+同时，若在事件处理程序中返回false，则事件传播和默认操作都会停止
