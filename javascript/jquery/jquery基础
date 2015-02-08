@@ -88,3 +88,8 @@ $($(event.target).is('button'))       触发事件的元素含有标签button则
 事件委托
 如想为一个div里的多个按钮注册单击事件，则可以只为div注册单击事件，通过event.target获取
 实际单击的按钮，同时最后使用event.stopPropagation()停止事件冒泡传播
+
+内置的事件委托
+$('div').on('click', 'button', function() {...})
+把click绑定到了div,但只有event.target和selector 'button'匹配时才会执行内部代码
+此时，函数内部的this会映射匹配到的button
