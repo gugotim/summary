@@ -73,8 +73,18 @@ jquery使用事件冒泡，如  <div><span><a></a></span></div>
 不再向上冒泡，即若点击的时链接，则此点击事件不上传给span和div，达到的效果是，点击链接则由链接
 单击事件处理，点击div的其他部分则由div.click处理
 
-默认操作，如<a>的打开链接，使用preventDefault()停止
+默认操作，如<a>的打开链接，使用.preventDefault()停止
+//特别的，在IE中要禁止默认操作，要设置event的returnValue为false，但jquery内部已实现跨浏览器
+操作，因此直接使用.preventDefault()即可
 默认操作和事件传播任何一方发生时都可以终止另一方，如在默认操作中调用.stopPropagation()则会停止
 事件传播
+同时，若在事件处理程序中返回false，则事件传播和默认操作都会停止,相当于对event同时调用
+.stopPropagtion()和preventDeault()
 
-同时，若在事件处理程序中返回false，则事件传播和默认操作都会停止
+.is(selector)
+若集和中有一个元素与选择符匹配则返回true,如
+$($(event.target).is('button'))       触发事件的元素含有标签button则返回true
+
+事件委托
+如想为一个div里的多个按钮注册单击事件，则可以只为div注册单击事件，通过event.target获取
+实际单击的按钮，同时最后使用event.stopPropagation()停止事件冒泡传播
