@@ -1,0 +1,9 @@
+hasAttribute()
+用于不考虑命名空间的特性检测
+
+在xhtml中使用多种语言时使用命名空间，如
+<html xmlns=".../1999/xhtml">
+	...
+	<s:svg xmlns=".../2000/svg">
+此时对SVG，localName取得"svg",namespaceURI取得".../2000/svg",prefix取得"s",
+tagName取得"s:svg"
