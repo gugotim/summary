@@ -1,0 +1,16 @@
+addEventListener() 和 removeEventListener()
+接受3个参数，分别为事件名，事件处理函数，一个布尔值(true: 事件捕获阶段调用; false: 事件冒泡阶段调用)
+与onclick的区别是可以 添加多个处理函数，按顺序触发
+通过addEventListener()添加的函数只能通过removeEventListener()移除
+因此，使用匿名函数的事件处理程序无法删除
+
+事件捕获->事件响应->事件冒泡
+事件捕获由外到内，事件冒泡由内到外
+
+return false 和 preventDefault()
+都可以阻止默认事件的发生，比如a链接点击后的跳转，但是都不能阻止事件冒泡继续向上传递
+只有cancelable为true的事件才能使用preventDefault()
+
+stopPropagation()
+不会阻止当前事件处理程序的运行，只会阻止继续冒泡传递
+如，在a链接的处理函数中使用stopPropagation(),a的跳转行为仍会继续
