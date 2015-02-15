@@ -1,0 +1,30 @@
+html5标准结构
+<table>
+  <caption>title</caption>
+  <thead>
+    <tr>
+      <th>name</th>          /*   注释：如果您使用 thead、tfoot 以及 tbody 元素，
+                                您就必须使用全部的元素。
+                                它们的出现次序是：thead、tfoot、tbody，
+                                这样浏览器就可以在收到所有数据前呈现页脚了。
+                                您必须在 table 元素内部使用这些标签。*/
+      <th>sex</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>sum</td>
+      <td>$180</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>xxx</td>
+      <td>male</td>
+    </tr>
+    <tr>
+      <td>xxx</td>
+      <td>female</td>
+    </tr>
+  </tbody>
+</table>
