@@ -1,0 +1,9 @@
+样式表分块
+样式表分块、分结构有利于代码查找和修改，以注释为导航进行搜索
+如
+/* @group general styles */       //包括body主体、链接、标题等
+/* @group help styles */          //表单、通知和错误
+/* @group page structure */       //头部、页脚和导航，布局
+/* @group page components */      //各个页面，即给body添加类或ID，以区别展现方式
+/* @group overrides */
+自我感觉实现起来不清晰
