@@ -7,3 +7,8 @@
 /* @group page components */      //各个页面，即给body添加类或ID，以区别展现方式
 /* @group overrides */
 自我感觉实现起来不清晰
+
+标准注释语法
+/* @todo: Remember to xxxx */
+/* @workaround: do sth. to fix some problem, but it has room to be improved */
+/* @bugfix: now it doesn't work properly in ie8.0 */
