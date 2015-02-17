@@ -14,3 +14,12 @@ return false 和 preventDefault()
 stopPropagation()
 不会阻止当前事件处理程序的运行，只会阻止继续冒泡传递
 如，在a链接的处理函数中使用stopPropagation(),a的跳转行为仍会继续
+
+焦点
+focus和blur不会冒泡，focusin和focusout会冒泡
+
+鼠标事件
+只有mousedown和mouseup相继触发，才会触发click
+event.clientX和event.clientY的位置是相对与视口的
+event.pageX和event.pageY是相对于整个页面的
+event.screenX和event.screenY相对于整个浏览器窗口而言的

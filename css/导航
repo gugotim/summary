@@ -1,0 +1,7 @@
+导航的一般形式
+<ul>
+	<li><a></a></li>
+</ul>
+此时设定 a{ display:block; },否则a的高度会和li的不一样
+另外，默认的，在chrome中li高度为21px，firefox中为19px，为了一致性，使用reset.css以让他们都为16px
+
