@@ -1,0 +1,3 @@
+inline元素 只能修改 水平 padding border margin,设置垂直的不起作用
+另外可以设置 line-height调整行高，设置height width不起作用
+设置成inline-block后可以象块级元素 
