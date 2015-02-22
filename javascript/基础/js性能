@@ -11,3 +11,20 @@ var element = document.getElementById("id");
 若加载JS文件放在HEAD，由于规范，浏览器从每个域名最多同时下载2个文件，下载期间不同域名的文件也不会下载，所以JS文件应放在</body>之前加载，同时window.onload也能正确作用
 
 压缩空格和注释,使用更短的变量名
+
+事件委托
+利用冒泡将事件处理程序统一交给上层元素,如
+<ul><li>1</li><li>2</li><li>3</li></ul>
+三个li的click事件统一交给ul.click处理，通过event.target确定具体目标
+这样可以减少处理函数，降低使用内存
+
+移除事件处理程序
+如DOM元素被删除时要主动取消与该元素相关的事件，不然其占用内存不能被正确释放，如
+<button value="show message" />
+var button = ...;
+button.onclick = function() {
+  ...
+  button.onclick = null;
+  button.innerHTML = "bye~";
+}
+注，在事件处理程序中删除元素也能阻止事件冒泡。
