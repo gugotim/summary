@@ -1,0 +1,2 @@
+要想在一个DIV内使用浮动，并且其他元素不被影响，可以在div末尾添加一个br 使用clear:both,如
+<div><img /><p></p><br class="clear" /></div> //.clear {clear:both;}

@@ -28,3 +28,6 @@ button.onclick = function() {
   button.innerHTML = "bye~";
 }
 注，在事件处理程序中删除元素也能阻止事件冒泡。
+
+在页面卸载前，最好在onunload事件中移除所有的事件处理程序，不过这样在使用bfcache返回时这些程序
+也不能使用，需要重新加载页面
