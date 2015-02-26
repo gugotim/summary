@@ -1,0 +1,2 @@
+background-image在background-color之上，所以可以让image在repeat-x，然后color选择和image
+底部相似的颜色
