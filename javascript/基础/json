@@ -1,1 +1,37 @@
 json字符串只能使用双引号""
+
+属性名也应用双引号包围,如
+{
+  "name": "chang",
+  "age": 23,
+  "college": {
+    "name": "ShannXi Normal University",
+    "history": 50
+  }
+}
+使用JSON.stringify()把js对象转换成json,结果不包含多余空格
+同时，值为undefined的属性也会被跳过
+
+使用JSON.parse()将json数据转换成js对象，若传递不是有效json数据则会抛出错误
+
+JSON.stringify()有三个参数，第三个参数为缩进空格数，使用后会包含空格符，第二个如果是个数组，则结果只保留在原对象中存在数组中的属性，如
+var book = {author:"tim", edition:3, year: 2011};
+json.stringify(book, ["author", "year"]);//{"author":"tim","year":2011}
+
+另外还可传入过滤函数
+var kkk = JSON.stringify(book,function(key, value) {
+  switch(key) {
+    case "edition": {
+      if(value < 2012) {
+        return "before 2012";
+      }
+    }
+    default: return value;
+  }
+});
+
+JSON.stringify()执行步骤
+1）存在toJSON则调用，不存在则返回本身
+2）若提供过滤函数（第二个参数）则应用，处理的值是第1步结果
+3）对2）的结果进行序列化
+4）存在第三个参数则进行相应格式化
