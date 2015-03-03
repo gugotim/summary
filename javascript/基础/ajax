@@ -15,3 +15,39 @@ if(request){
 
 渐进增强地使用ajax
 如登陆，先按照正常方式创建表单和submit,然后在onsubmit里使用ajax，若用户禁用了JS，onsubmit不起作用，表单按照传统方式整个传递，返回结果刷新整个页面，若开启了JS则使用ajax
+
+onreadystatechange内部使用request.responseText而不是this.responseText来获取数据，
+因为作用域问题this有时会导致失败
+
+request.abort()可用于终止ajax请求，终止后应使用对requset = null;来解除内存占用
+
+
+xhr.open()发送的URL应保持格式良好，即使用encodeURLComponent()编码，以转义空格 /等字符,可以使用
+function addURLParam(url, name, value) {
+  url += (url.indexOf('?') == -1 ? '?' : '&');
+  url += encodeURIComponent(name) + '=' + encodeURIComponent(value);
+  return url;
+}
+
+服务器Post和表单提交请求并不相同，但可以让post模仿表单提交
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+var form = document.getElementById('user-info');
+xhr.send(new FormData(form));			//FormData()用于表单序列化,是XMLHTTPRequest 2级
+还可以这样使用FormData,
+var data = new FormData();
+data.append('name', 'tim');
+data.append('book', 'javascript pro');
+xhr.send(data);
+
+Get请求的速度可达到Post的两倍
+
+overrideMimeType
+服务器返回的数据MIME类型是plain/text,这样即使包含XML但xhr.responseXML仍是null,
+可让XHR对象强制将返回的结果当作XML处理，但必须在send之前
+xhr.overrideMimeType('text/xml');//除了IE基本都支持
+
+
+xhr.onprogress
+此事件拥有event.lengthComputable(进度信息是否可用),
+ event.position（已接受字节数）, event.totalSize（根据Content-Length的预期字节数）
+可用于制作进度条
