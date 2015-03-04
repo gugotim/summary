@@ -1,0 +1,15 @@
+this指针的几种情况
+1.全局
+全局中this指向Global(浏览器中即是window)
+
+function Person(name){this.name=name;}
+Person('tim'); alert(window.name);  //'tim',此时的this指向window
+
+2.对象
+function Person(name){this.name=name;}
+var person = new Person('tim');      //此时的this指向person这个对象实例
+
+3.原型
+function Person(name){this.name=name;}
+Person.prototype.age = 23;
+Person.prototype.sayAge = function(){alert(this.name)};//this指向了原型
