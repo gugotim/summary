@@ -1,0 +1,31 @@
+居中布局可以使用
+<div class="wrapper"></div>
+.wrapper {width: 900px; margin: 0 auto;}
+混杂模式的IE5、6不支持margin auto,但是text-align:center会误将所有元素居中，于是
+body {text-align: center;} .wrapper {width: 900px; text-align:left;}可以呈现同样的效果
+
+浮动布局（几乎所有元素都浮动，在类似footer的元素上统一清除）
+
+对包含浮动元素的父元素使用overflow:hidden;可以清除浮动,如
+<div class="content">
+  <div class="primary">
+    primary
+  </div>
+  <div class="secondary">
+    secondary
+  </div>
+</div>
+.content {
+  overflow: hidden;
+}
+.content .primary {
+  width: 650px;
+  padding-right: 20px;
+  float: right;
+  display: inline;
+}
+.content .secondary {
+  width: 230px;
+  float: left;
+  display: inline;
+}
