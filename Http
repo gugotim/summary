@@ -1,0 +1,49 @@
+Http发出包的组成部分
+1.请求包
+GET /index.jsp HTTP/1.1         //方法-uri-协议/版本  ，方法还有GET、POST、HEAD、OPTIONS、PUT、DELETE和TRACE等
+//Accept-Language: zh-cn
+Accept                          //客户端可识别的内容类型列表
+Connection: Keep-Alive
+Host: 192.168.0.106
+Content-Length: 37              //附加到请求的数据字节数
+Use-Agent:xxx                   //客户端厂家和版本
+
+userName=new_andy&password=new_andy
+
+2.应答包                         //协议-状态代码-描述，应答头，应答正文
+HTTP/1.1 200 OK
+Server: Microsoft-IIS/4.0
+Date: Mon, 3 Jan 2005 13:13:33 GMT
+Content-Type: text/html
+Last-Modified: Mon, 11 Jan 2004 13:23:42 GMT
+Content-Length: 90
+
+<html>
+<head>
+<title>解读HTTP包示例</title></head><body>
+Hello WORLD!
+</body>
+</html>
+
+
+实现（java）
+java.net.Socket类(客户端)或java.net.ServerSocket类(服务器端)
+一旦接收到请求，ServerSocket创建一个Socket实例来处理与该客户端的通信。
+
+
+响应码
+响应码分五种类型，由它们的第一位数字表示：
+1.1xx：信息，请求收到，继续处理
+2.2xx：成功，行为被成功地接受、理解和采纳
+3.3xx：重定向，为了完成请求，必须进一步执行的动作
+4.4xx：客户端错误，请求包含语法错误或者请求无法实现
+5.5xx：服务器错误，服务器不能实现一种明显无效的请求
+
+
+get和post的区别
+1.安全性
+  get发送的数据在url中可以看到，post放在http 头部包，用户看不到
+2.数据量和性能
+  get发送的数据量较小，post理论上无限制。get效率是post的两倍
+3.作用
+  get用来请求数据，post更新数据
