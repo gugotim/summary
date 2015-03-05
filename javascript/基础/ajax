@@ -51,3 +51,34 @@ xhr.onprogress
 此事件拥有event.lengthComputable(进度信息是否可用),
  event.position（已接受字节数）, event.totalSize（根据Content-Length的预期字节数）
 可用于制作进度条
+
+CORS跨源资源共享
+实现：
+1.IE
+	IE8引入 XDR
+	var xdr = XdomainRequest();
+	xdr.onload = function() {//只能访问原始文本
+		alert(xdr.responseText);//接到响应就触发，无法确定响应码
+	}
+	xdr.onerror = function() {
+		alert('error');//无其他信息可用
+	}
+	xdr.open('get','http://baidu.com');
+	xdr.send(null);
+
+	xdr支持ontimeout
+	xdr.timeout = 1000;//1s
+	xdr.ontimeout = funciont() {alert('too long');};
+
+	对于post请求可以设置contentType
+	xdr.open('post', 'http://somewhere.com');
+	xdr.contentType = 'application/x-www-form-urlencoded';
+	xdr.send('name1=value1&name2=value2');
+
+2.其他浏览器
+	通过XMLHTTPRequest支持CORS,在open中传入绝对地址即可
+	xhr.open('get', 'http://somewhere.com', true);//跨域xhr可以访问status和statusText属性，而且支持同步，但
+	不能使用setRequestHeader()自定义头部
+	不能发送和接收cookie
+	调用getAllResponseHeaders()总返回空字符串
+	所以，访问本地资源使用相对地址，跨域时绝对地址，以避免禁用cookie
