@@ -1,0 +1,14 @@
+cookie
+设置
+HTTP/1.1 200 OK
+Content-type: text/html
+Set-Cookie: name=value
+Other-header: other-header-value
+
+之后发送到服务器
+Get /index.html HTTP/1.1
+Cookie: name=value
+Other-header: other-header-value
+
+本来是不区分大小写的，但是某些服务器会区分大小写，所以最好区分大小写
+另外，cookie的名称和值必须是经过URL编码的
