@@ -1,0 +1,1 @@
+当label设置了for,即其他input元素的id（典型情况），当点击label内文字时，input元素会获得焦点
