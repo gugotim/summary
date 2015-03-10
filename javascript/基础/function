@@ -1,0 +1,26 @@
+function和匿名函数的区别
+1.函数提升
+function声明的函数在执行前可以读取，即可在函数定义处之前调用
+匿名函数（拉姆达）必须在定义之后使用
+
+2.匿名函数的作用
+var sayHi;
+if(condition){
+	sayHi = function(){
+		alert('hi');
+	};
+} else {
+	sayHi = function(){
+		alert('yo');
+	};
+}
+
+arguments.callee
+指向正在执行的函数，严格模式下访问会导致错误，可以使用
+var factorial = (function f(num) {
+	if(num<=1){
+		return 1;
+	} else {
+		return num * f(num-1);
+	}
+});
