@@ -37,3 +37,6 @@ body {text-align: center;} .wrapper {width: 900px; text-align:left;}可以呈现
 这样在div底部长度向下延伸520px，其中20px为底部与边框之间的空隙，实际上这三列布局的高度是不一定相等的，
 但是对父元素使用overflow:hidden;后，将以最长的div为标准，横向截去不包含内容的部分，由于div都延伸的足够长，
 所以截去后看起来高度是一样的
+
+
+使用position:absolute，同时设置left,right可以使元素宽度拉到想要的情况，如left:0;right:0; 宽度则为100%；

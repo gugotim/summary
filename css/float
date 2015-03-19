@@ -1,2 +1,5 @@
 要想在一个DIV内使用浮动，并且其他元素不被影响，可以在div末尾添加一个br 使用clear:both,如
 <div><img /><p></p><br class="clear" /></div> //.clear {clear:both;}
+
+position:absolute和float联合使用时float不起作用，因为元素已经脱离文档流
+position:relative和float联合使用时float起作用
