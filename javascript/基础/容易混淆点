@@ -1,0 +1,95 @@
+1.考察this
+var length = 10;
+function fn() {
+  console.log(this.length);
+}
+
+var obj = {
+  length: 5,
+  method: function(fn) {
+    fn();
+    arguments[0]();
+  }
+};
+
+obj.method(fn, 1);  
+
+结果 10 2
+
+取对象可以用点操作符或方括号，此时this指向对象，即arguments,而arguments参数为2个
+
+2.var和函数的提前声明
+var和function都会提前声明，且funtion优于var,如
+function fn(a) {
+  console.log(a);
+  var a = 2;
+  function a() {};
+  console.log(a);
+}
+fn(1);
+结果 function a(){};  2
+
+3.局部变量和全局变量
+var f = true;
+if (f === true) {
+  var a = 10;
+}
+
+function fn() {
+  var b = 20;//局部变量
+  c = 30;
+}
+
+fn();
+console.log(a);
+console.log(b);
+console.log(c);
+
+输出 10 报错 30
+function内的是局部变量
+
+4.变量隐式声明
+if('a' in window) {
+  var a = 10;
+}
+
+alert(a);
+输出 10
+{}内的变量提前声明
+
+5.给基本数据类型添加属性，不报错，但取值时使undefined
+var a = 10;
+a.pro = 10;
+console.log(a.pro + a);
+
+var s = 'hello';
+s.pro = 'world';
+console.log(s.pro + s);
+输出 NaN undefinedhello
+引用基本数据类型的属性返回undefined, 10+undefined返回NaN,  undefined + string 返回字符串
+
+6.函数声明优于变量声明
+console.log(typeof fn);
+function fn() {}
+var fn;
+输出 function
+
+7.经典函数闭包
+<!-- 实现一段脚本，使得点击对应链接alert出相应的编号 -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+  <a href='#'> 第一个链接 </a> </br>
+  <a href='#'> 第二个链接 </a> </br>
+  <a href='#'> 第三个链接 </a> </br>
+  <a href='#'> 第四个链接 </a> </br>
+  <script type="text/javascript">
+    var lis = document.links;
+    for(var i=0, len=lis.length; i<len; i++) {
+      (function(i){
+        links[i].onclick = function() {
+          alert(i+1);
+        }
+      })(i);
+    }
+  </script>
+</body>
