@@ -1,0 +1,8 @@
+1.声明并初始化函数参数，如
+var kkk = 'assigned';
+function aaa(kkk) {
+	console.log(kkk);	//argument
+	var kkk;
+	console.log(kkk);	//argument
+}
+aaa('argument');

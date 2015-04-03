@@ -1,0 +1,3 @@
+fadeIn() fadeOut()类似同步时间，完成后其下的代码才继续执行
+
+slideDown() slideUp()则是异步的

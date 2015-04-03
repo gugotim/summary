@@ -93,3 +93,10 @@ $($(event.target).is('button'))       触发事件的元素含有标签button则
 $('div').on('click', 'button', function() {...})
 把click绑定到了div,但只有event.target和selector 'button'匹配时才会执行内部代码
 此时，函数内部的this会映射匹配到的button
+
+对于只执行一次的时间，使用
+$().one('click', function(){});
+
+模拟事件，
+$().trigger('click');	或者
+$().click();
