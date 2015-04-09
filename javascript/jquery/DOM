@@ -1,0 +1,7 @@
+DOM
+值回调
+$('a').attr({
+	id: function(index, oldValue) {		//index表示迭代次数
+		return 'link-' + index;					//函数返回值将作为属性值，oldValue保存修改之前的值
+	}
+});
