@@ -5,3 +5,24 @@ $('a').attr({
 		return 'link-' + index;					//函数返回值将作为属性值，oldValue保存修改之前的值
 	}
 });
+
+.attr .prop .val
+.attr用来设置html元素标签上的属性值
+.prop用来设置元素DOM属性，如
+<input type="checked" checked="checked" />
+其attr('checked')为 checked，prop('checked')为true，为了确保浏览器兼容性，以DOM属性为准，即操作prop('checked')
+.val用于设置属性值，如
+<input type="text" />
+其value在DOM中属性为defaultValue,而对于
+<select>其被选中的选项的value通过selected属性取得，jquery提供.val(),解决这些不一致
+若<select multiple="multiple">则使用val(['value1', 'value2'])可多选
+<input type="checkbox" name="name" value="tim">
+<input type="checkbox" name="name" value="rose">
+<input type="checkbox" name="name" value="wade">
+<input type="checkbox" name="name" value="nash">
+$('input[type="checkbox"][name="name"]').val(['tim', 'nash']);//也可实现多选
+
+添加元素
+使用$('<a href="xxx">xxx</a>')创建html元素
+insertBefore, insertAfter添加在元素外部、之前||之后
+prependTo, appendTo添加在元素内部、之前||之后
